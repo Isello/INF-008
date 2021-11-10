@@ -6,13 +6,16 @@
 package programa.de.gestão.universitária;
 
 import java.util.ArrayList;
+//import static programa.de.gestão.universitária.Curso;
+import static programa.de.gestão.universitária.CursoTableModel.Cursos;
 
 /**
  *
  * @author Isello
  */
 public class TelaPrincipal extends javax.swing.JFrame {
-
+    
+    CursoTableModel tableModel =  new CursoTableModel();
     /**
      * Creates new form TelaPrincipal
      */
@@ -145,6 +148,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+ 
 
-    
 }

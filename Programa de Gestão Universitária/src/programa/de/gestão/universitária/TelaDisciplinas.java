@@ -18,7 +18,7 @@ import static programa.de.gestão.universitária.DisciplinaTableModel.Disciplina
 
 
 public class TelaDisciplinas extends javax.swing.JFrame {
-    int geraId = 0;
+    static int geraId = 0;
 
     /**
      * Creates new form TelaDisciplinas
@@ -66,6 +66,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         inputSiglaDisciplina2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -169,6 +170,13 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Editar Disciplina");
 
+        jButton3.setText("Excluir");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -179,7 +187,9 @@ public class TelaDisciplinas extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(28, 28, 28)
@@ -238,7 +248,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(41, 41, 41)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 564, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 495, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addComponent(jLabel1)
@@ -268,7 +278,9 @@ public class TelaDisciplinas extends javax.swing.JFrame {
                             .addComponent(cmbCurso2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton3)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
@@ -277,10 +289,10 @@ public class TelaDisciplinas extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Cadastrar disciplina
-        geraId = getRowCount();
         Disciplina disciplina = new Disciplina();
         disciplina.setNomeDisciplina(inputNomeDisciplina.getText());
         disciplina.setIdDisciplina(geraId);
+        geraId++;
         disciplina.setSiglaDisciplina(inputSiglaDisciplina.getText());
         disciplina.setProfessor(inputProfessorDisciplina.getText());
         disciplina.setCurso((String) cmbCurso.getSelectedItem());
@@ -335,6 +347,13 @@ public class TelaDisciplinas extends javax.swing.JFrame {
         inputProfessorDisciplina2.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // Excluir disciplina
+        if (tDisciplinas.getSelectedRow() != -1){
+            tableModel.removeRow(tDisciplinas.getSelectedRow());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -382,6 +401,7 @@ public class TelaDisciplinas extends javax.swing.JFrame {
     private javax.swing.JTextField inputSiglaDisciplina2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

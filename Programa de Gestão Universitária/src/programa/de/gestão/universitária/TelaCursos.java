@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package programa.de.gestão.universitária;
+import java.util.UUID;
 import programa.de.gestão.universitária.Curso;
 import javax.swing.table.DefaultTableModel;
 import static programa.de.gestão.universitária.CursoTableModel.Cursos;
@@ -14,7 +15,7 @@ import static programa.de.gestão.universitária.CursoTableModel.Cursos;
  */
 public class TelaCursos extends javax.swing.JFrame {
     
-    int geraId;
+    static int geraId=0;
     
     CursoTableModel tableModel =  new CursoTableModel();
 
@@ -161,15 +162,8 @@ public class TelaCursos extends javax.swing.JFrame {
         // Cadastrar curso
         Curso curso = new Curso();
         curso.setNomeCurso(inputNomeCurso.getText());
-        for(int i = 0; i < Cursos.size(); i++) {
-            //aqui você invoca cada objeto e suas 
-            // propriedades utilizando o yourArrayList.get(i)
-            if (geraId == Cursos.get(i).getIdCurso()){
-                geraId++;
-            }
-        }
-        
         curso.setIdCurso(geraId);
+        geraId++;
         tableModel.addRow(curso);
         inputNomeCurso.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -183,6 +177,7 @@ public class TelaCursos extends javax.swing.JFrame {
         if (tCursos.getSelectedRow() != -1){
             tableModel.removeRow(tCursos.getSelectedRow());
         }
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

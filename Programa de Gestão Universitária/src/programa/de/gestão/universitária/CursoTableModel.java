@@ -7,7 +7,6 @@ public class CursoTableModel extends AbstractTableModel{
     
     private String[] colunas = {"Código","Curso"};
     public static ArrayList<Curso> Cursos = new ArrayList<>();
-    public int id;
 
     @Override
     public String getColumnName(int column) {
